@@ -1,0 +1,27 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: instance
+    image: debian:buster
+provisioner:
+  name: ansible
+  inventory:
+    host_vars:
+      instance:
+        engelsystem_mysql_root_password: testpassword
+        engelsystem_mysql_user_password: testpassword
+        engelsystem_api_key: testapikey
+        certbot_skip: yes
+
+        ansible_python_interpreter: /usr/bin/python3
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

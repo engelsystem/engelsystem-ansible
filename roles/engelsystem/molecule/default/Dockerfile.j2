@@ -1,0 +1,9 @@
+# Molecule managed
+
+{% if item.registry is defined %}
+FROM {{ item.registry.url }}/{{ item.image }}
+{% else %}
+FROM {{ item.image }}
+{% endif %}
+
+RUN if [ $(command -v apt-get) ]; then apt-get update && apt-get install -y python3 sudo bash ca-certificates && apt-get clean; fi
