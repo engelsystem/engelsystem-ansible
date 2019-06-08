@@ -104,6 +104,7 @@
   mysql_user:
     name: root
     password: "{{ engelsystem_mysql_root_password }}"
+    update_password: on_create
 
 - name: engelsystem_mycnf
   template:
@@ -119,3 +120,4 @@
     name: engelsystem
     password: "{{ engelsystem_mysql_user_password }}"
     priv: 'engelsystem.*:ALL'
+    update_password: on_create
