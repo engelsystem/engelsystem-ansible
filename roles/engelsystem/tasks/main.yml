@@ -83,18 +83,20 @@
   template:
     src: nginx_vhost.conf.j2
     dest: /etc/nginx/sites-enabled/engelsystem.conf
-  when: not engelsystem_ssl.stat.exists
+  when: certbot_skip or not engelsystem_ssl.stat.exists
   notify:
     - engelsystem_nginxreload
 
 - name: engelsystem_certbot
-  include: certbot.yml
-  when: not engelsystem_ssl.stat.exists
+  include_tasks:
+    file: certbot.yml
+  when: not certbot_skip and not engelsystem_ssl.stat.exists
 
 - name: engelsystem_nginxconfig
   template:
     src: nginx_vhost_ssl.conf.j2
     dest: /etc/nginx/sites-enabled/engelsystem.conf
+  when: not certbot_skip
   notify:
     - engelsystem_nginxreload
 

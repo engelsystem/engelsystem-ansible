@@ -15,3 +15,4 @@
     that: "certbot_mail != 'admin@example.com'"
     fail_msg: "Please set an email adress for certbot."
     success_msg: "Thanks for setting a email address ❤️."
+  when: not certbot_skip
