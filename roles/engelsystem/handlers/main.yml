@@ -1,7 +1,7 @@
 ---
 
 - name: engelsystem_nginxreload
-  systemd:
+  service:
     name: nginx
     state: reloaded
 

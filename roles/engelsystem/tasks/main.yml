@@ -20,6 +20,16 @@
       - unzip
     update_cache: yes
 
+- name: engelsystem_services
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+    - mysql
+    - nginx
+    - php7.3-fpm
+
 - name: engelsystem_user
   user:
     name: engelsystem
@@ -107,13 +117,3 @@
     name: engelsystem
     password: "{{ engelsystem_mysql_user_password }}"
     priv: 'engelsystem.*:ALL'
-
-- name: engelsystem_services
-  systemd:
-    name: "{{ item }}"
-    state: started
-    enabled: yes
-  loop:
-    - nginx
-    - php7.3-fpm
-    - mariadb
