@@ -7,5 +7,7 @@
       - python-certbot-nginx
 
 - name: certbot_run
-  shell: |
+  command: |
     certbot --non-interactive --nginx --agree-tos -m "{{ certbot_mail }}" --domains "{{ engelsystem_servername }}" certonly
+  args:
+    creates: "/etc/letsencrypt/live/{{ engelsystem_servername }}/fullchain.pem"

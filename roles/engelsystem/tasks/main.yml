@@ -66,20 +66,20 @@
 
 - name: engelsystem_checkcert
   stat:
-    path: "/etc/letsencrypt/live/{{ engelsystem_servername}}/fullchain.pem"
+    path: "/etc/letsencrypt/live/{{ engelsystem_servername }}/fullchain.pem"
   register: engelsystem_ssl
 
 - name: engelsystem_nginxconfig
   template:
     src: nginx_vhost.conf.j2
     dest: /etc/nginx/sites-enabled/engelsystem.conf
-  when: engelsystem_ssl.stat.exists == False
+  when: not engelsystem_ssl.stat.exists
   notify:
     - engelsystem_nginxreload
 
 - name: engelsystem_certbot
   include: certbot.yml
-  when: engelsystem_ssl.stat.exists == False
+  when: not engelsystem_ssl.stat.exists
 
 - name: engelsystem_nginxconfig
   template:
