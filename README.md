@@ -8,17 +8,17 @@ You will need a server running Debian 10 with SSH key auth.
 
 ## Usage
 
+First of all, clone this repository and cd into the newly created directory.
+
 Configure:
 
-* Rename the inventory file `contrib/ansible/inventory/example` to `server` and replace the servername in it.
-* Rename the configuration file `contrib/ansible/inventory/host_vars/server.example.com.yml` to match the servername in your inventory file.
+* Rename the inventory file `inventory/example` to `server` and replace the servername in it.
+* Rename the configuration file `inventory/host_vars/server.example.com.yml` to match the servername in your inventory file.
 * Edit the configuration file to your needs.
 
 Run:
 
 ```sh
-cd contrib/ansible
-
 # Method 1
 # 
 # Connect as your_user and sudo with the password ansible asks you
