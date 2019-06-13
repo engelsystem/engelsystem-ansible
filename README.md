@@ -22,12 +22,12 @@ Run:
 # Method 1
 # 
 # Connect as your_user and sudo with the password ansible asks you
-ansible-playbook -u your_user -b -K -i inventory/server
+ansible-playbook -u your_user -b -K -i inventory/server site.yml
 
 # Method 2
 #
 # Connect as root
-ansible-playbook -u root -i inventory/server
+ansible-playbook -u root -i inventory/server site.yml
 ```
 
 ## Install Ansible
