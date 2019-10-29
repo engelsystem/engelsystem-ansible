@@ -1,5 +1,7 @@
 ---
 
+engelsystem_base_dir: /opt/engelsystem
+engelsystem_tls_base: /etc/letsencrypt/live
 engelsystem_version: v3.0.0
 engelsystem_servername: engel.example.com
 engelsystem_mysql_root_password: password

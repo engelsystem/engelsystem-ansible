@@ -7,5 +7,5 @@
 
 - name: engelsystem_migratedb
   shell: |
-    cd ~engelsystem/latest
+    cd ~engelsystem/current
     ./bin/migrate
